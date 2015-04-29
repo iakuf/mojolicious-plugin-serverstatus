@@ -7,7 +7,7 @@ use JSON;
 use Fcntl qw(:DEFAULT :flock);
 use IO::Handle;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my $JSON = JSON->new->utf8(0);
 
