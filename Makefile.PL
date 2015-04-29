@@ -11,6 +11,10 @@ WriteMakefile(
   DISTNAME      => 'Mojolicious-Plugin-ServerStatus',
   ABSTRACT_FROM => 'lib/Mojolicious/Plugin/ServerStatus.pm',
   VERSION_FROM  => 'lib/Mojolicious/Plugin/ServerStatus.pm',
+  ($ExtUtils::MakeMaker::VERSION > 6.48
+      ? (MIN_PERL_VERSION => 5.010001) # mojolicious
+      : ()
+  ),
   PREREQ_PM     => {
     'Mojolicious'          => '4.90',
     'Net::CIDR::Lite'      => 0,
@@ -23,6 +27,7 @@ WriteMakefile(
     'Test::More' => 0.90,
   },
   META_MERGE => {
+    requires  => { perl => '5.010001' }, # mojolicious
     resources => {
       license    => 'http://dev.perl.org/licenses/',
       repository => 'https://github.com/iakuf/mojolicious-plugin-serverstatus',
