@@ -13,10 +13,11 @@ WriteMakefile(
   VERSION_FROM  => 'lib/Mojolicious/Plugin/ServerStatus.pm',
   PREREQ_PM     => {
     'Mojolicious'          => '4.90',
-    'JSON'                 => '2.53',
     'Net::CIDR::Lite'      => 0,
     'Parallel::Scoreboard' => '0.03',
-    'Try::Tiny'            => '0.09',
+    'JSON'                 => '2.53',
+    'Fcntl'                => 0,
+    'IO::Handle'           => 0,
   },
   BUILD_REQUIRES => {
     'Test::More' => 0.90,

@@ -2,7 +2,6 @@ package Mojolicious::Plugin::ServerStatus;
 
 use Mojo::Base 'Mojolicious::Plugin';
 use Net::CIDR::Lite;
-use Net::CIDR;
 use Parallel::Scoreboard;
 use JSON;
 use Fcntl qw(:DEFAULT :flock);
