@@ -1,14 +1,14 @@
 Mojolicious::Plugin::ServerStatus
 ---------------------------------
 
-This is a Mojolicious plugin to show server status, like Apache's
+This is a [Mojolicious](http://mojolicio.us) plugin to show server status, like Apache's
 mod\_status. It displays server status information
 in multiprocess Mojolicious servers such as morbo and hypnotoad.
 
 It is based on [Plack::Middleware::ServerStatus::Lite](https://metacpan.org/pod/Plack::Middleware::ServerStatus::Lite).
 
 This module changes status only before and after executing the applications,
-so it cannot monitor keepalive session and network i/o wait.
+so it cannot monitor keepalive session and network I/O wait.
 
 #### Installation ####
 

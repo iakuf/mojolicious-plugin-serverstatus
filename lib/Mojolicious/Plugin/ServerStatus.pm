@@ -343,7 +343,10 @@ Mojolicious::Plugin::ServerStatus - show server status like Apache's mod_status
 
 =head1 DESCRIPTION
 
-Mojolicious::Plugin::ServerStatus is display server status in multiprocess Mojo servers such as morbo and hypnotoad . This module changes status only before and after executing the application. so cannot monitor keepalive session and network i/o wait. 
+Mojolicious::Plugin::ServerStatus displays server status in multiprocess
+L<Mojolicious> servers such as morbo and hypnotoad. This module changes
+status only before and after executing the application, so it cannot
+monitor keepalive session and network I/O wait.
 
 =head1 CONFIGURATIONS
 
@@ -402,7 +405,9 @@ fu kai E<lt>iakuf {at} 163.comE<gt>
 
 =head1 SEE ALSO
 
-Original ServerStatus by  L<https://metacpan.org/pod/Plack::Middleware::ServerStatus::Lite>
+L<Mojolicious>
+
+Original ServerStatus by  L<https://metacpan.org/pod/Plack::Middleware::ServerStatus::Lite>.
 
 =head1 LICENSE
 
