@@ -402,9 +402,7 @@ fu kai E<lt>iakuf {at} 163.comE<gt>
 
 =head1 SEE ALSO
 
-Original ServerStatus by  <https://metacpan.org/pod/Plack::Middleware::ServerStatus::Lite>
-
-L<Plack::Middleware::ServerStatus::Lite>
+Original ServerStatus by  L<https://metacpan.org/pod/Plack::Middleware::ServerStatus::Lite>
 
 =head1 LICENSE
 
