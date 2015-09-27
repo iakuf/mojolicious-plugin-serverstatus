@@ -1,0 +1,12 @@
+Revision history for Mojolicious-Plugin-ServerStatus
+
+0.03    2015-04-30
+    - improved documentation
+    - updated dist meta information
+    - removed unneeded dependencies
+
+0.02    2014-03-19
+    - improved query string handling
+
+0.01    2014-03-19
+    - initial release
