@@ -36,10 +36,10 @@ or manually:
      BusyWorkers: 2
      IdleWorkers: 3
      --
-     pid status remote_addr host method uri protocol ss
-     20060 A 127.0.0.1 localhost:10001 GET / HTTP/1.1 1
+     pid status remote_addr host user method uri protocol ss
+     20060 A 127.0.0.1 localhost:10001 - GET / HTTP/1.1 1
      20061 .
-     20062 A 127.0.0.1 localhost:10001 GET /server-status HTTP/1.1 0
+     20062 A 127.0.0.1 localhost:10001 - GET /server-status HTTP/1.1 0
      20063 .
      20064 .
 
@@ -47,9 +47,9 @@ or manually:
      % curl http://server:port/server-status?json
      {"Uptime":"1332476669","BusyWorkers":"2",
       "stats":[
-        {"protocol":null,"remote_addr":null,"pid":"78639",
+        {"protocol":null,"remote_addr":null,"pid":"78639","user":"-",
          "status":".","method":null,"uri":null,"host":null,"ss":null},
-        {"protocol":"HTTP/1.1","remote_addr":"127.0.0.1","pid":"78640",
+        {"protocol":"HTTP/1.1","remote_addr":"127.0.0.1","pid":"78640","user":"-",
          "status":"A","method":"GET","uri":"/","host":"localhost:10226","ss":0},
         ...
      ],"IdleWorkers":"3"}
