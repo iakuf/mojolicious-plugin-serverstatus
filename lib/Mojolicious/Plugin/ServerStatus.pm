@@ -7,7 +7,7 @@ use JSON;
 use Fcntl qw(:DEFAULT :flock);
 use IO::Handle;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 my $JSON = JSON->new->utf8(0);
 
@@ -315,34 +315,45 @@ Mojolicious::Plugin::ServerStatus - show server status like Apache's mod_status
 
 =head1 SYNOPSIS
 
+    # Lite
     plugin 'ServerStatus' => {
         path => '/server-status',
         allow => [ '127.0.0.1', '192.168.0.0/16' ],
     };
 
-  % curl http://server:port/server-status
-  Uptime: 1234567789
-  Total Accesses: 123
-  BusyWorkers: 2
-  IdleWorkers: 3
-  --
-  pid status remote_addr host method uri protocol ss
-  20060 A 127.0.0.1 localhost:10001 GET / HTTP/1.1 1
-  20061 .
-  20062 A 127.0.0.1 localhost:10001 GET /server-status HTTP/1.1 0
-  20063 .
-  20064 .
+    # Full Mojolicious
+    $self->plugin(
+		'ServerStatus' => {
+			path  => '/server-status',
+			allow => ['127.0.0.1', '192.168.0.0/16'],
+			scoreboard => "/some/other/dir",
+		}
+	);
 
-  # JSON format
-  % curl http://server:port/server-status?json
-  {"Uptime":"1332476669","BusyWorkers":"2",
-   "stats":[
-     {"protocol":null,"remote_addr":null,"pid":"78639",
-      "status":".","method":null,"uri":null,"host":null,"ss":null},
-     {"protocol":"HTTP/1.1","remote_addr":"127.0.0.1","pid":"78640",
-      "status":"A","method":"GET","uri":"/","host":"localhost:10226","ss":0},
-     ...
-  ],"IdleWorkers":"3"}
+	# test 
+    % curl http://server:port/server-status
+    Uptime: 1234567789
+    Total Accesses: 123
+    BusyWorkers: 2
+    IdleWorkers: 3
+    --
+    pid status remote_addr host method uri protocol ss
+    20060 A 127.0.0.1 localhost:10001 GET / HTTP/1.1 1
+    20061 .
+    20062 A 127.0.0.1 localhost:10001 GET /server-status HTTP/1.1 0
+    20063 .
+    20064 .
+
+    # JSON format
+    % curl http://server:port/server-status?json
+    {"Uptime":"1332476669","BusyWorkers":"2",
+     "stats":[
+       {"protocol":null,"remote_addr":null,"pid":"78639",
+        "status":".","method":null,"uri":null,"host":null,"ss":null},
+       {"protocol":"HTTP/1.1","remote_addr":"127.0.0.1","pid":"78640",
+        "status":"A","method":"GET","uri":"/","host":"localhost:10226","ss":0},
+       ...
+    ],"IdleWorkers":"3"}
 
 =head1 DESCRIPTION
 
