@@ -1,5 +1,9 @@
 Revision history for Mojolicious-Plugin-ServerStatus
 
+0.04    2016-03-18
+    - updating status when request finish
+    - add userinfo
+
 0.03    2015-04-30
     - improved documentation
     - updated dist meta information

@@ -97,6 +97,7 @@ sub register {
                         REQUEST_URI => $req->url->path->to_string || '', 
                         SERVER_PROTOCOL => $req->is_secure ? 'HTTPS' : 'HTTP',
                     };
+        ($env->{USER}) = defined $self->req->url->to_abs->userinfo ? (split /:/smx,$self->req->url->to_abs->userinfo,2) : '-';
         $plugin->set_state("A", $env);
     });
 
@@ -105,6 +106,7 @@ sub register {
         if ( $plugin->conf->{counter_file} ) {
             $plugin->counter(1, length($output) );
         }
+        $plugin->set_state('.');
     });
 }
 
@@ -123,6 +125,7 @@ sub set_state {
             method => $env->{REQUEST_METHOD},
             uri => $env->{REQUEST_URI},
             protocol => $env->{SERVER_PROTOCOL},
+            user => $env->{USER},
             time => time(),
         };
     }
@@ -222,14 +225,14 @@ sub _handle_server_status {
             delete $pstatus->{ppid};
             delete $pstatus->{uptime};
             $process_status .= sprintf "%s\n", 
-                join(" ", map { defined $pstatus->{$_} ? $pstatus->{$_} : '' } qw/pid status remote_addr host method uri protocol ss/);
+                join(" ", map { defined $pstatus->{$_} ? $pstatus->{$_} : '' } qw/pid status remote_addr host user method uri protocol ss/);
             push @process_status, $pstatus;
         }
         $body .= <<EOF;
 BusyWorkers: $busy
 IdleWorkers: $idle
 --
-pid status remote_addr host method uri protocol ss
+pid status remote_addr host user method uri protocol ss
 $process_status
 EOF
         chomp $body;
